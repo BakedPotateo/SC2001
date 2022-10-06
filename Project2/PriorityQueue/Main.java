@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         int V = 12;
-        int source = 5;
+        int source = 0;
 
         // adjacency list representation of graph
         List<List<GraphNode> > adjList = new ArrayList<List<GraphNode>>();
