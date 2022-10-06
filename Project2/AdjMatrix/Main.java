@@ -14,7 +14,7 @@ public class Main {
 
             source = sc.nextInt();
 
-            if(source < numVertices - 1 && source >= 0)
+            if(source <= numVertices - 1 && source >= 0)
                 break;
             else
                 System.out.println("Invalid source!");
