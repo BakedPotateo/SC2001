@@ -1,8 +1,6 @@
 package SC2001.Project2.AdjMatrix;
 
 import java.util.*; 
-import java.lang.*;
-import java.io.*;
 public class ShortestPath {
     private int V;
     private int source;
