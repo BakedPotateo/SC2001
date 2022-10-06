@@ -47,9 +47,16 @@ public class Main {
         adjList.get(10).add(new GraphNode(0, 3));
         adjList.get(10).add(new GraphNode(6, 1));
 
-        adjList.get(11).add(new GraphNode(6, 3));
-        adjList.get(11).add(new GraphNode(7, 1));
+        adjList.get(11).add(new GraphNode(7, 3));
+        adjList.get(11).add(new GraphNode(9, 1));
 
+        // adjList.get(0).add(new GraphNode(1, 5)); 
+        // adjList.get(0).add(new GraphNode(2, 3)); 
+        // adjList.get(0).add(new GraphNode(3, 2)); 
+        // adjList.get(0).add(new GraphNode(4, 3));
+        // adjList.get(0).add(new GraphNode(5, 3));
+        // adjList.get(2).add(new GraphNode(1, 2)); 
+        // adjList.get(2).add(new GraphNode(3, 3)); 
 
         // call Dijkstra's algo method  
         PQGraph testGraph = new PQGraph(V); 

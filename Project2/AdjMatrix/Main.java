@@ -2,7 +2,7 @@ package SC2001.Project2.AdjMatrix;
 
 public class Main {
     public static void main(String[] args) {
-        int weightedGraph[][] = new int[][]{{0, 2, 0, 8, 7, 0, 0, 0, 0, 0, 0, 0},
+        int weightedGraph[][] = new int[][]{{0, 2, 0, 8, 7, 10, 0, 0, 0, 0, 0, 0},
                                             {0, 0, 3, 0, 0, 6, 0, 0, 0, 0, 0, 0},
                                             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0},
                                             {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2},
