@@ -1,5 +1,3 @@
-package SC2001.Project2.AdjMatrix;
-
 import java.util.*; 
 public class ShortestPath {
     private int V;
