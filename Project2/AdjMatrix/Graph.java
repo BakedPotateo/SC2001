@@ -4,11 +4,16 @@ public class Graph {
 
     int V;
     int E;
+    LinkedList<Edge>[] adjList;
     int adjMatrix[][];
     int randEdges;
 
     public Graph(int V) {
         this.V = V;
+        adjList = new LinkedList[V];
+        for (int i = 0; i < V; i++) {
+            adjList[i] = new LinkedList<>();
+        }
         adjMatrix = new int[V][V];
     }
 
@@ -23,6 +28,10 @@ public class Graph {
         if (sparseFactor == 0) {
             Random rand = new Random();
             this.V = maxVertices;
+            adjList = new LinkedList[V];
+            for (int i = 0; i < V; i++) {
+                adjList[i] = new LinkedList<>();
+            }
             adjMatrix = new int[V][V];
 
             /*
@@ -48,6 +57,10 @@ public class Graph {
             // generate sparse graph
             Random rand = new Random();
             this.V = rand.nextInt(maxVertices) + 2;
+            adjList = new LinkedList[V];
+            for (int i = 0; i < V; i++) {
+                adjList[i] = new LinkedList<>();
+            }
             adjMatrix = new int[V][V];
 
             /*
@@ -72,19 +85,20 @@ public class Graph {
 
     public void addEdge(int src, int dest, int weight) {
         Edge edge = new Edge(src, dest, weight);
+        adjList[src].addFirst(edge);
         adjMatrix[src][dest] = weight;
         E++;
     }
 
-    // public void printGraph() {
-    //     for (int i = 0; i < V; i++) {
-    //         LinkedList<Edge> list = adjList[i];
-    //         for (int j = 0; j < list.size(); j++) {
-    //             System.out.println("vertex " + i + " is connected to " + list.get(j).dest + " with weight "
-    //                     + list.get(j).weight);
-    //         }
-    //     }
-    // }
+    public void printGraph() {
+        for (int i = 0; i < V; i++) {
+            LinkedList<Edge> list = adjList[i];
+            for (int j = 0; j < list.size(); j++) {
+                System.out.println("vertex " + i + " is connected to " + list.get(j).dest + " with weight "
+                        + list.get(j).weight);
+            }
+        }
+    }
 
     public boolean existEdge(int src, int dest) {
         // check if there is alreeady an edge between src and dest
