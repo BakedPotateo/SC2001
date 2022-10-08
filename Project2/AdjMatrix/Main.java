@@ -18,41 +18,38 @@ public class Main {
                 System.out.println("Invalid source!");
         }
         
-        // int weightedGraph[][] = new int[numVertices][numVertices];
-
-        // for(int i = 0; i < numVertices; i++)
-        //     for(int j = 0; j < numVertices; j++){
-        //         if(i == j)
-        //             weightedGraph[i][j] = 0;
-        //         else
-        //             weightedGraph[i][j] = (int)(Math.random()*(20));
-        //     }
-
-        // int weightedGraph[][] = new int[][]{{0, 2, 0, 8, 7, 10, 0, 0, 0, 0, 0, 0},
-        //                                     {0, 0, 3, 0, 0, 6, 0, 0, 0, 0, 0, 0},
-        //                                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0},
-        //                                     {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2},
-        //                                     {0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0},
-        //                                     {0, 0, 0, 0, 0, 0, 2, 0, 6, 0, 13, 0},
-        //                                     {0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        //                                     {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0},
-        //                                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        //                                     {0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0},
-        //                                     {3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-        //                                     {0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0}};
         
+        // construct graph
         Graph g = new Graph(numVertices, 20, 0);
         
-        for(int i = 0; i < numVertices; i++){
-            for(int j = 0; j < numVertices; j++){
-                System.out.printf(g.adjMatrix[i][j] + ", ");
-            }
-            System.out.println();
-        }
+        // adjacency list representation of graph
+        List<List<GraphNode> > adjList = new ArrayList<List<GraphNode>>();
+        for (int i = 0; i < numVertices; i++) { 
+            List<GraphNode> item = new ArrayList<GraphNode>(); 
+            adjList.add(item); 
+        } 
 
-        
+        // convert AdjMatrix to AdjList
+        for(int i = 0; i < numVertices; i++)
+            for(int j = 0; j < numVertices; j++)
+                if(g.adjMatrix[i][j] != 0)
+                    adjList.get(i).add(new GraphNode(j, g.adjMatrix[i][j]));
+
+
+        // AdjMatrix
         ShortestPath graph = new ShortestPath(numVertices, source);
         graph.Dijkstra(g.adjMatrix, source);
+  
+        // AdjList
+        PQGraph testGraph = new PQGraph(numVertices); 
+        testGraph.Dijkstra(adjList, source); 
+   
+        // Print the shortest path from source node to all the nodes for AdjList
+        System.out.println("The shortest path from source node to other nodes:"); 
+        System.out.println("Source\t\t" + "Node#\t\t" + "Distance");
+        for (int i = 0; i < testGraph.dist.length; i++) 
+            System.out.println(source + " \t\t " + i + " \t\t "  + testGraph.dist[i]);
+            
         sc.close();
     }
 }
