@@ -25,37 +25,16 @@ public class PQGraph {
         
         // add source vertex to priority queue
         PQueue.add(new GraphNode(source, 0));
-
         dist[source] = 0;
 
-        while(visited.size() != V){
-            // add source node to visited list
-            int u = PQueue.remove().node;
-            visited.add(u);
-            adjGraphNodes(u);
-        }
-    }
-
-    // process neighbouring nodes
-    private void adjGraphNodes(int u){
-        int edgeDistance = -1; 
-        int newDistance = -1; 
-   
-        // process all neighbouring nodes of u 
-        for (int i = 0; i < adjList.get(u).size(); i++) { // adjList.get(u) returns a LL with root node u
-            GraphNode v = adjList.get(u).get(i); // returns whole node linked to u, note node number/cost
-   
-            // proceed only if current node is not in 'visited'
-            if (!visited.contains(v.node)) { 
-                edgeDistance = v.cost; 
-                newDistance = dist[u] + edgeDistance; 
-   
-                // compare distances 
-                if (newDistance < dist[v.node]) 
-                    dist[v.node] = newDistance; 
-   
-                // Add the current vertex to the PriorityQueue 
-                PQueue.add(new GraphNode(v.node, dist[v.node])); 
+        while (PQueue.size() > 0) {
+            GraphNode current = PQueue.poll();
+ 
+            for (GraphNode n :adjList.get(current.node)) {
+                if (dist[current.node] + n.cost < dist[n.node]) {
+                    dist[n.node] = n.cost + dist[current.node];
+                    PQueue.add(new GraphNode(n.node, dist[n.node]));
+                }
             }
         }
     }

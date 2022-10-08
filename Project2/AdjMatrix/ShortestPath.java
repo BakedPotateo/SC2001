@@ -23,10 +23,10 @@ public class ShortestPath {
     }
 
     void printDist(int pathArr[]){
-        System.out.println("The shortest path from source node to other nodes:"); 
-        System.out.println("Source\t\t" + "Node#\t\t" + "Distance");
-        for (int i = 0; i < pathArr.length; i++) 
-            System.out.println(source + " \t\t " + i + " \t\t "  + pathArr[i]);
+        // System.out.println("The shortest path from source node to other nodes:"); 
+        // System.out.println("Source\t\t" + "Node#\t\t" + "Distance");
+        // for (int i = 0; i < pathArr.length; i++) 
+        //     System.out.println(source + " \t\t " + i + " \t\t "  + pathArr[i]);
     }
 
     void Dijkstra(int weightedGraph[][], int source){
