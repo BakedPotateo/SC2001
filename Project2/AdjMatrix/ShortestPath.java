@@ -22,14 +22,7 @@ public class ShortestPath {
         return minIndex;
     }
 
-    void printDist(int pathArr[]){
-        // System.out.println("The shortest path from source node to other nodes:"); 
-        // System.out.println("Source\t\t" + "Node#\t\t" + "Distance");
-        // for (int i = 0; i < pathArr.length; i++) 
-        //     System.out.println(source + " \t\t " + i + " \t\t "  + pathArr[i]);
-    }
-
-    void Dijkstra(int weightedGraph[][], int source){
+    void Dijkstra(int weightedGraph[][]){
         int pathArr[] = new int[V];
         Boolean shortestPathSet[] = new Boolean[V];
 
@@ -48,7 +41,5 @@ public class ShortestPath {
                 if(!shortestPathSet[v] && weightedGraph[u][v] != 0 && pathArr[u] != Integer.MAX_VALUE && pathArr[u] + weightedGraph[u][v] < pathArr[v])
                     pathArr[v] = pathArr[u] + weightedGraph[u][v];
         }
-
-        printDist(pathArr);
     }
 }

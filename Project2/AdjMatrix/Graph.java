@@ -6,7 +6,7 @@ public class Graph {
     int E;
     LinkedList<Edge>[] adjList;
     int adjMatrix[][];
-    int maxEdges;
+    int randEdges;
 
     public Graph(int V) {
         this.V = V;
@@ -38,10 +38,10 @@ public class Graph {
             * V*(V – 1)(with no multiple edges and self-loops).
             */
 
-        maxEdges = V * (V - 1);
-        // randEdges = rand.nextInt(maxEdges - V + 1) + 1;
+        int maxEdges = V * (V - 1);
+        randEdges = rand.nextInt(maxEdges - V + 1) + 1;
         // System.out.println(randEdges);
-        for (int i = 0; i < maxEdges/2; i++) {
+        for (int i = 0; i < randEdges; i++) {
             int src = rand.nextInt(V);
             int dest = rand.nextInt(V);
             if (src != dest && !existEdge(src, dest)) {
