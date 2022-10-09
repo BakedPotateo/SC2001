@@ -12,8 +12,8 @@ public class Main {
         int numRuns = sc.nextInt();
         long[][] MatxRunsArr = new long[numRuns][20];
         long[][] ListRunsArr = new long[numRuns][20];
-        int[][] MatxEdgeArray = new int[numRuns][20];
-        int[][] ListEdgeArray = new int[numRuns][20];
+        int[][] EdgeArray = new int[numRuns][20];
+
         // construct graph
         for(run = 0; run < numRuns; run++){
             System.out.println("Run " + (run + 1));
@@ -31,7 +31,7 @@ public class Main {
                 long time2 = System.nanoTime();
                 // System.out.println(numVertices+" "+g.randEdges+" "+(time2-time1));
                 MatxRunsArr[run][i] = time2 - time1;
-                MatxEdgeArray[run][i] = g.randEdges;
+                EdgeArray[run][i] = g.randEdges;
 
                 numVertices += 50;
             }
@@ -62,7 +62,6 @@ public class Main {
 
                 // System.out.println(numVertices+" "+g.randEdges+" "+(time4-time3));
                 ListRunsArr[run][k] = time4 - time3;
-                ListEdgeArray[run][k] = g.randEdges;
                 numVertices += 50;
                 adjList.clear();
             }
@@ -70,23 +69,20 @@ public class Main {
         
         long[] MatxRunsAvg = new long[20];
         long[] ListRunsAvg = new long[20];
-        int[] MatxEdgeAvg = new int[20];
-        int[] ListEdgeAvg = new int[20];
+        int[] EdgeAvg = new int[20];
+
         for(int i = 0; i < 20; i++){
             long sum1 = 0;
             long sum2 = 0;
             int sum3 = 0;
-            int sum4 = 0;
             for(int j = 0; j < numRuns; j++){
                 sum1 += MatxRunsArr[j][i];
                 sum2 += ListRunsArr[j][i];
-                sum3 += MatxEdgeArray[j][i];
-                sum4 += ListEdgeArray[j][i];
+                sum3 += EdgeArray[j][i];
             }
             MatxRunsAvg[i] = sum1/numRuns;
             ListRunsAvg[i] = sum2/numRuns;
-            MatxEdgeAvg[i] = sum3/numRuns;
-            ListEdgeAvg[i] = sum4/numRuns;
+            EdgeAvg[i] = sum3/numRuns;
         }
 
         System.out.println();
@@ -95,11 +91,11 @@ public class Main {
 
         System.out.println("AdjMatrix");
         for(int i = 0; i < 20; i++)
-            System.out.println((i + 1)*50+" "+MatxEdgeAvg[i]+" "+MatxRunsAvg[i]);
+            System.out.println((i + 1)*50+" "+EdgeAvg[i]+" "+MatxRunsAvg[i]);
         
         System.out.println("AdjList");
         for(int i = 0; i < 20; i++)
-            System.out.println((i + 1)*50+" "+ListEdgeAvg[i]+" "+ListRunsAvg[i]);
+            System.out.println((i + 1)*50+" "+EdgeAvg[i]+" "+ListRunsAvg[i]);
         sc.close();
     }
 }
