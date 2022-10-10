@@ -23,7 +23,7 @@ public class Graph {
      * @param maxVertices maximum number of vertices in the graph
      * @param maxWeight   maximum weight of an edge
      */
-    public Graph(int maxVertices, int maxWeight) {
+    public Graph(int maxVertices, int maxWeight, boolean sparseFactor) {
         Random rand = new Random();
         this.V = maxVertices;
         adjList = new LinkedList[V];
@@ -37,18 +37,34 @@ public class Graph {
             * the maximum number of possible edges is
             * V*(V – 1)(with no multiple edges and self-loops).
             */
+        if(!sparseFactor){
+            int maxEdges = V * (V - 1);
+            randEdges = rand.nextInt(maxEdges - V + 1) + 1;
+            // System.out.println(randEdges);
+            for (int i = 0; i < randEdges; i++) {
+                int src = rand.nextInt(V);
+                int dest = rand.nextInt(V);
+                if (src != dest && !existEdge(src, dest)) {
+                    int weight = rand.nextInt(maxWeight);
+                    addEdge(src, dest, weight);
+                } else
+                    i--;
+            }
+        }
 
-        int maxEdges = V * (V - 1);
-        randEdges = rand.nextInt(maxEdges - V + 1) + 1;
-        // System.out.println(randEdges);
-        for (int i = 0; i < randEdges; i++) {
-            int src = rand.nextInt(V);
-            int dest = rand.nextInt(V);
-            if (src != dest && !existEdge(src, dest)) {
-                int weight = rand.nextInt(maxWeight);
-                addEdge(src, dest, weight);
-            } else
-                i--;
+        else{
+            for(int i = 0; i < V; i++){
+                for(int j = 0; j < V; j++){
+                    if(i == j){
+                        addEdge(i, j, 0);;
+                    }
+                    else if(i > 0){
+                        addEdge(i, j, 0);;
+                    }
+                    else
+                        addEdge(1, j, rand.nextInt(100) + 50);
+                }
+            }
         }
     }
 

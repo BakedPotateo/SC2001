@@ -20,7 +20,7 @@ public class Main {
             numVertices = 50;
             // System.out.println("AdjMatrix");
             for(int i = 0; i < 20; i++){
-                Graph g = new Graph(numVertices, 20);
+                Graph g = new Graph(numVertices, 20, false);
                 arr[i] = g;
                 // g.printGraph();
 
