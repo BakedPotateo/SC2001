@@ -1,5 +1,3 @@
-package SC2001.Project2.PriorityQueue;
-
 import java.util.*;
 
 public class GraphNode implements Comparator<GraphNode>{
