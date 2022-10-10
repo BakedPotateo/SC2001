@@ -5,7 +5,7 @@ public class PQGraph {
     int dist[]; // array to store dist from source node
     Set<Integer> visited; // "array" that contains no duplicate elements, to see if node has been traversed
     PriorityQueue<GraphNode> PQueue; // priority queue structure
-    List<List<GraphNode>> adjList; // adjacency list using LL
+    List<List<GraphNode>> adjList; // adjacency list using List structure
     
 
     // constructor
