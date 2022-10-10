@@ -6,7 +6,7 @@ public class Graph {
     int E;
     LinkedList<Edge>[] adjList;
     int adjMatrix[][];
-    int randEdges;
+    int numEdges;
 
     public Graph(int V) {
         this.V = V;
@@ -39,30 +39,42 @@ public class Graph {
             */
         if(!sparseFactor){
             int maxEdges = V * (V - 1);
-            randEdges = rand.nextInt(maxEdges - V + 1) + 1;
-            // System.out.println(randEdges);
-            for (int i = 0; i < randEdges; i++) {
+            numEdges = rand.nextInt(maxEdges - V + 1) + 1;
+            for (int i = 0; i < numEdges; i++) {
                 int src = rand.nextInt(V);
                 int dest = rand.nextInt(V);
                 if (src != dest && !existEdge(src, dest)) {
                     int weight = rand.nextInt(maxWeight);
                     addEdge(src, dest, weight);
-                } else
+                } 
+                else
                     i--;
             }
         }
 
         else{
+            numEdges = 0;
             for(int i = 0; i < V; i++){
                 for(int j = 0; j < V; j++){
                     if(i == j){
-                        addEdge(i, j, 0);;
+                        addEdge(i, j, 0);
                     }
-                    else if(i > 0){
-                        addEdge(i, j, 0);;
+                    else if(i > 0 && i!= j){
+                        int k = 0;
+                        while(k < 3){
+                            int destEdge = rand.nextInt(V);
+                            if(i != destEdge && !existEdge(i, destEdge)){
+                                addEdge(i, destEdge, rand.nextInt(maxWeight));
+                                numEdges++;
+                                k++;
+                            }
+                        }
+                        j = V;
                     }
-                    else
-                        addEdge(1, j, rand.nextInt(100) + 50);
+                    else{
+                        addEdge(i, j, rand.nextInt(maxWeight));
+                        numEdges++;
+                    }
                 }
             }
         }

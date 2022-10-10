@@ -10,6 +10,11 @@ public class Main {
         int run;
         System.out.println("Input no. of runs:");
         int numRuns = sc.nextInt();
+        System.out.println("Input sparse factor (1 for true, 0  for false):");
+        int sparseNum = sc.nextInt();
+        boolean sparseFactor = true;
+        if(sparseNum == 0)
+            sparseFactor = false;
         long[][] MatxRunsArr = new long[numRuns][20];
         long[][] ListRunsArr = new long[numRuns][20];
         int[][] EdgeArray = new int[numRuns][20];
@@ -20,7 +25,7 @@ public class Main {
             numVertices = 50;
             // System.out.println("AdjMatrix");
             for(int i = 0; i < 20; i++){
-                Graph g = new Graph(numVertices, 20, false);
+                Graph g = new Graph(numVertices, 20, sparseFactor);
                 arr[i] = g;
                 // g.printGraph();
 
@@ -31,7 +36,7 @@ public class Main {
                 long time2 = System.nanoTime();
                 // System.out.println(numVertices+" "+g.randEdges+" "+(time2-time1));
                 MatxRunsArr[run][i] = time2 - time1;
-                EdgeArray[run][i] = g.randEdges;
+                EdgeArray[run][i] = g.numEdges;
 
                 numVertices += 50;
             }
