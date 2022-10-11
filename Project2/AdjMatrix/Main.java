@@ -12,6 +12,7 @@ public class Main {
         int numRuns = sc.nextInt();
         System.out.println("Input sparse factor (1 for true, 0  for false):");
         int sparseNum = sc.nextInt();
+        sc.close();
         boolean sparseFactor = true;
         if(sparseNum == 0)
             sparseFactor = false;
@@ -101,6 +102,5 @@ public class Main {
         System.out.println("AdjList");
         for(int i = 0; i < 20; i++)
             System.out.println((i + 1)*50+" "+EdgeAvg[i]+" "+ListRunsAvg[i]);
-        sc.close();
     }
 }
