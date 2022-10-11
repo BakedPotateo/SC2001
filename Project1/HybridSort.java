@@ -1,4 +1,4 @@
-package SC2001.Project1;
+package Project1;
 
 import java.util.*;
 
