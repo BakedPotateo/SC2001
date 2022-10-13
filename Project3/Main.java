@@ -27,30 +27,30 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of items: ");
-        int numItems = sc.nextInt();
+        int n = sc.nextInt();
         System.out.println("Enter the capacity of the knapsack: ");
         int C = sc.nextInt();
 
-        int[][] AR = new int[numItems+1][C+1];
+        int[][] DP_Arr = new int[n+1][C+1];
 
-        for (int i = 0; i < numItems; i++)
+        for (int i = 0; i < n; i++)
             for(int j = 0; j <= C; j++)
-                AR[i][j] = 0;
+                DP_Arr[i][j] = 0;
         
-        knapsackItem[] knapsackItems = new knapsackItem[numItems + 1];
+        knapsackItem[] knapsackItems = new knapsackItem[n + 1];
 
-        for(int i = 0; i <= numItems; i++)
+        for(int i = 0; i <= n; i++)
             knapsackItems[i] = new knapsackItem();
         
         knapsackItems[0] = new knapsackItem(0,0);
         System.out.println("Enter the weight of items in order: ");
-        for(int i = 1; i <= numItems; i++)
+        for(int i = 1; i <= n; i++)
             knapsackItems[i].setWeight(sc.nextInt());
         System.out.println("Enter the profit of items in order: ");
-        for(int i = 1; i <= numItems; i++)
+        for(int i = 1; i <= n; i++)
             knapsackItems[i].setProfit(sc.nextInt());
 
-        System.out.println("The maximum value is " + bottomUpDP(AR, knapsackItems, C));
+        System.out.println("The maximum value is " + bottomUpDP(DP_Arr, knapsackItems, C));
         sc.close();
     }
 }
