@@ -19,7 +19,11 @@ public class knapsackItem {
         return this.profit;
     }
 
-    public int getOrder(){
-        return this.profit/this.weight;
+    public void setWeight(int w){
+        this.weight = w;
+    }
+
+    public void setProfit(int p){
+        this.profit = p;
     }
 }
