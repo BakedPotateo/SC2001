@@ -7,8 +7,7 @@ public class Main {
         int i, j;
         int size;
         for (i = 1; i <= KArr.length - 1; i++)
-            for (j = 0; j <= capacity; j++)
-            {
+            for (j = 0; j <= capacity; j++){
         
                 size = KArr[i].getWeight();
                 if (size <= j)
@@ -24,6 +23,7 @@ public class Main {
             return a;
         else return b;
     }
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of items: ");
