@@ -4,14 +4,11 @@ import java.util.*;
 
 public class knapsackApp {
     public static int bottomUpDP(int[][] DP_Arr, knapsackItem[] KArr, int capacity){
-        int i, j;
-        int size;
-        for (i = 1; i <= KArr.length - 1; i++)
-            for (j = 0; j <= capacity; j++){
-        
-                size = KArr[i].getWeight();
-                if (size <= j)
-                    DP_Arr[i][j] = max(DP_Arr[i - 1][j], DP_Arr[i - 1][j - size] + KArr[i].getProfit());
+        for (int i = 1; i <= KArr.length - 1; i++)
+            for (int j = 0; j <= capacity; j++){
+                int weight = KArr[i].getWeight();
+                if (weight <= j)
+                    DP_Arr[i][j] = max(DP_Arr[i - 1][j], DP_Arr[i - 1][j - weight] + KArr[i].getProfit());
                 else
                     DP_Arr[i][j] = DP_Arr[i - 1][j];
             }
